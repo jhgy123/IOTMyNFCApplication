@@ -135,6 +135,29 @@ public class RunApplicationActivity extends Activity{
 		startActivityForResult(intent , 0);
 	}
 
+	public void onClick_itineraryCardApplication(View view){
+		//打开行程卡
+		Uri uri = Uri.parse("https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D2021002170600786%26page%3Dpages%252Findex%252Findex%26enbsv%3D0.2.2209271605.51%26chInfo%3Dch_share__chsub_CopyLink%26apshareid%3Dee4d5c15-67a7-4ebb-81f9-cfd3777c79c5");
+		Intent intent = new Intent();
+		intent.setAction("android.intent.action.VIEW");
+		intent.setData(uri);
+		startActivity(intent);
+	}
+
+	public void onClick_healthCodeApplication(View view){
+		//打开健康码
+		Uri uri = Uri.parse("https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D2021002139686716%26page%3Dpages%252Findex%252Findex%26enbsv%3D0.2.2212011042.13%26chInfo%3Dch_share__chsub_CopyLink%26apshareid%3D4b7300b8-fd22-4061-8069-374005ac56e7");
+//		Uri uri = Uri.parse("#小程序://行程卡/ypbMd6pmSIBQDaA");
+		Intent intent = new Intent();
+		intent.setAction("android.intent.action.VIEW");
+		intent.setData(uri);
+		startActivity(intent);
+//
+	}
+
+
+
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		murlApplication.setText("写入要打开的url链接");

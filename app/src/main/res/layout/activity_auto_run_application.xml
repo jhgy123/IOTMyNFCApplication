@@ -16,6 +16,19 @@
         android:layout_height="wrap_content"
         android:onClick="onClick_urlApplication"
         android:text="写入要打开的url链接"/>
+
+    <Button
+        android:id="@+id/button_itinerarycard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick_itineraryCardApplication"
+        android:text="写入通信行程卡"/>
+    <Button
+        android:id="@+id/button_healthcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick_healthCodeApplication"
+        android:text="写入云南健康码"/>
     
     <TextView 
         android:layout_width="match_parent"
