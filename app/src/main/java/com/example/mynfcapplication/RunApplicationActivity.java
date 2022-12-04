@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 /*
  * 程序的主界面逻辑，相当于MainActivity
  */
@@ -23,6 +22,8 @@ public class RunApplicationActivity extends Activity{
 	
 	private Button mSelectAutoRunApplication;
 	private Button murlApplication;
+	private Button mitinerarycardApplication;
+	private Button mhealthcodeApplication;
 	//当前选中的包名
 	private String mPackageName;
 	//写入的url内容
@@ -41,6 +42,8 @@ public class RunApplicationActivity extends Activity{
 		
 		mSelectAutoRunApplication = (Button) findViewById(R.id.button_select_auto_run_application);
 		murlApplication = (Button) findViewById(R.id.button_url);
+		mitinerarycardApplication = (Button) findViewById(R.id.button_itinerarycard);
+		mhealthcodeApplication = (Button) findViewById(R.id.button_healthcode);
 		
 		mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 		//一单截获NFC的消息，就调用PendingIntent来激活窗口
@@ -137,21 +140,35 @@ public class RunApplicationActivity extends Activity{
 
 	public void onClick_itineraryCardApplication(View view){
 		//打开行程卡
-		Uri uri = Uri.parse("https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D2021002170600786%26page%3Dpages%252Findex%252Findex%26enbsv%3D0.2.2209271605.51%26chInfo%3Dch_share__chsub_CopyLink%26apshareid%3Dee4d5c15-67a7-4ebb-81f9-cfd3777c79c5");
-		Intent intent = new Intent();
-		intent.setAction("android.intent.action.VIEW");
-		intent.setData(uri);
-		startActivity(intent);
+//		Uri uri = Uri.parse("https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D2021002170600786%26page%3Dpages%252Findex%252Findex%26enbsv%3D0.2.2209271605.51%26chInfo%3Dch_share__chsub_CopyLink%26apshareid%3Dee4d5c15-67a7-4ebb-81f9-cfd3777c79c5");
+//		Intent intent = new Intent();
+//		intent.setAction("android.intent.action.VIEW");
+//		intent.setData(uri);
+//		startActivity(intent);
+		murlApplication.setText("写入要打开的url链接");
+		mSelectAutoRunApplication.setText("选择已安装的应用程序");
+		mhealthcodeApplication.setText("写入云南健康码");
+		mitinerarycardApplication.setText("写入通信行程卡【已选择】");
+		mwriteurl="https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D2021002170600786%26page%3Dpages%252Findex%252Findex%26enbsv%3D0.2.2209271605.51%26chInfo%3Dch_share__chsub_CopyLink%26apshareid%3Dee4d5c15-67a7-4ebb-81f9-cfd3777c79c5";
+		tpye=2;
+		Toast.makeText(this , "【已选择】写入通信行程卡" , Toast.LENGTH_SHORT).show();
 	}
 
 	public void onClick_healthCodeApplication(View view){
 		//打开健康码
-		Uri uri = Uri.parse("https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D2021002139686716%26page%3Dpages%252Findex%252Findex%26enbsv%3D0.2.2212011042.13%26chInfo%3Dch_share__chsub_CopyLink%26apshareid%3D4b7300b8-fd22-4061-8069-374005ac56e7");
-//		Uri uri = Uri.parse("#小程序://行程卡/ypbMd6pmSIBQDaA");
-		Intent intent = new Intent();
-		intent.setAction("android.intent.action.VIEW");
-		intent.setData(uri);
-		startActivity(intent);
+		murlApplication.setText("写入要打开的url链接");
+		mSelectAutoRunApplication.setText("选择已安装的应用程序");
+		mitinerarycardApplication.setText("写入通信行程卡");
+		mhealthcodeApplication.setText("写入云南健康码【已选择】");
+//		Uri uri = Uri.parse("https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D2021002139686716%26page%3Dpages%252Findex%252Findex%26enbsv%3D0.2.2212011042.13%26chInfo%3Dch_share__chsub_CopyLink%26apshareid%3D4b7300b8-fd22-4061-8069-374005ac56e7");
+		mwriteurl="https://render.alipay.com/p/s/i/?scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FappId%3D2021002139686716%26page%3Dpages%252Findex%252Findex%26enbsv%3D0.2.2212011042.13%26chInfo%3Dch_share__chsub_CopyLink%26apshareid%3D4b7300b8-fd22-4061-8069-374005ac56e7";
+		tpye=2;
+		Toast.makeText(this , "【已选择】写入云南健康码" , Toast.LENGTH_SHORT).show();
+		//		Uri uri = Uri.parse("#小程序://行程卡/ypbMd6pmSIBQDaA");
+//		Intent intent = new Intent();
+//		intent.setAction("android.intent.action.VIEW");
+//		intent.setData(uri);
+//		startActivity(intent);
 //
 	}
 
@@ -162,6 +179,8 @@ public class RunApplicationActivity extends Activity{
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		murlApplication.setText("写入要打开的url链接");
 		mSelectAutoRunApplication.setText("选择已安装的应用程序");
+		mitinerarycardApplication.setText("写入通信行程卡");
+		mhealthcodeApplication.setText("写入云南健康码");
 		if(resultCode == 1){
 			mSelectAutoRunApplication.setText(data.getExtras().getString("package_name"));
 			String temp = mSelectAutoRunApplication.getText().toString();
