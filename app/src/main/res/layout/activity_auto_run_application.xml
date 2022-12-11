@@ -1,47 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-    <Button 
+    android:orientation="vertical">
+
+    <!--    <androidx.appcompat.widget.Toolbar-->
+    <!--        android:id="@+id/toolbar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@color/colorPrimary"-->
+    <!--        android:minHeight="?attr/actionBarSize"-->
+    <!--        tools:ignore="MissingConstraints"/>-->
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"
+        />
+    <Button
         android:id="@+id/button_select_auto_run_application"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/holo_blue_dark"
         android:onClick="onClick_SelectAutoRunApplication"
-        android:text="选择已安装的应用程序"/>
+        android:text="写入要打开的应用程序"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_url" />
+
     <Button
         android:id="@+id/button_url"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:color/holo_blue_dark"
         android:onClick="onClick_urlApplication"
-        android:text="写入要打开的url链接"/>
+        android:text="写入要打开的url链接"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/button_select_auto_run_application"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_itinerarycard" />
 
     <Button
         android:id="@+id/button_itinerarycard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="26dp"
+        android:background="@android:color/holo_blue_dark"
         android:onClick="onClick_itineraryCardApplication"
-        android:text="写入通信行程卡"/>
+        android:text="写入通信行程卡"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/button_url"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_healthcode" />
+
     <Button
         android:id="@+id/button_healthcode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="436dp"
+        android:layout_marginBottom="18dp"
+        android:background="@android:color/holo_blue_dark"
         android:onClick="onClick_healthCodeApplication"
-        android:text="写入云南健康码"/>
-    
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="请将NFC标签或贴纸靠近手机背面"
-        android:textSize="16sp"/>
+        android:text="写入云南健康码"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/button_itinerarycard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    
-    <ImageView 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="122dp"
+        android:layout_marginBottom="15dp"
+        android:text="请将NFC标签贴近手机背面"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.938" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="415dp"
+        android:layout_height="261dp"
+        android:layout_marginTop="98dp"
+        android:layout_marginBottom="13dp"
         android:src="@drawable/read_nfc_tag"
-        android:layout_margin="10dp"/>
-    
-</LinearLayout>
+        app:layout_constraintBottom_toTopOf="@+id/button_healthcode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

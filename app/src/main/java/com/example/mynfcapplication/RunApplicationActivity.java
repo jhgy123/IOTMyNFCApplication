@@ -1,5 +1,6 @@
 package com.example.mynfcapplication;
 
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -12,14 +13,21 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 /*
  * 程序的主界面逻辑，相当于MainActivity
  */
-public class RunApplicationActivity extends Activity{
-	
+public class RunApplicationActivity extends AppCompatActivity{
+
 	private Button mSelectAutoRunApplication;
 	private Button murlApplication;
 	private Button mitinerarycardApplication;
@@ -33,22 +41,41 @@ public class RunApplicationActivity extends Activity{
 
 
 	private int tpye=0;//写入类型：1写入打开程序，2写入打开url
+	private Toolbar mNormalToolbar;
 
 	@SuppressLint("MissingInflatedId")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_auto_run_application);
-		
+		mNormalToolbar=findViewById(R.id.toolbar);
+		mNormalToolbar.setTitle("NFC应用");
+		setSupportActionBar(mNormalToolbar);
 		mSelectAutoRunApplication = (Button) findViewById(R.id.button_select_auto_run_application);
 		murlApplication = (Button) findViewById(R.id.button_url);
 		mitinerarycardApplication = (Button) findViewById(R.id.button_itinerarycard);
 		mhealthcodeApplication = (Button) findViewById(R.id.button_healthcode);
-		
+
 		mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 		//一单截获NFC的消息，就调用PendingIntent来激活窗口
 		mPendingIntent = PendingIntent.getActivity(this , 0 , new Intent(this , getClass()) , 0);
-		
+
+	}
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		//getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+		//getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+		return true;
+	}
+
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()){
+			case R.id.menu_setting:
+				Toast.makeText (this,"项目名称：NFC应用\n版本：1.0\n开发者：龚尹鸿杰，康彦伟\n指导教师：薛岗",Toast.LENGTH_LONG).show ();
+				break;
+		}
+		return true;
 	}
 
 	/*
@@ -120,14 +147,14 @@ public class RunApplicationActivity extends Activity{
 					Toast.makeText(this , "该NFC标签无法被格式化" , Toast.LENGTH_SHORT).show();
 				}
 			}
-		} 
+		}
 		catch (Exception e) {
 			Toast.makeText(this , "无法读取该NFC标签" , Toast.LENGTH_SHORT).show();
 		}
-		
+
 	}
-	
-	
+
+
 	public void onClick_SelectAutoRunApplication(View view){
 		Intent intent = new Intent(this , InstalledApplicationListActivity.class);
 		startActivityForResult(intent , 0);
@@ -205,7 +232,7 @@ public class RunApplicationActivity extends Activity{
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
 		if(mNfcAdapter != null){
 			//把这个RunApplicationActivity窗口设置为优先级高于所有能处理NFC标签的窗口，也就是将RunApplicationActivity窗口置为栈顶
 			mNfcAdapter.enableForegroundDispatch(this , mPendingIntent , null , null);
@@ -218,7 +245,7 @@ public class RunApplicationActivity extends Activity{
 	@Override
 	protected void onPause() {
 		super.onPause();
-		
+
 		if(mNfcAdapter != null){
 			mNfcAdapter.disableForegroundDispatch(this);
 		}

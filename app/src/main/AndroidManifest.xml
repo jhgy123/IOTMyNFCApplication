@@ -2,46 +2,42 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mynfcapplication"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="32" />
-
     <!-- 必要的NFC权限声明 -->
     <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:icon="@mipmap/ic_launcher1"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".RunApplicationActivity"
+            android:name="com.example.mynfcapplication.RunApplicationActivity"
+            android:exported="true"
             android:label="@string/title_activity_auto_run_application"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".InstalledApplicationListActivity"
+            android:name="com.example.mynfcapplication.InstalledApplicationListActivity"
+            android:exported="false"
             android:label="@string/title_activity_installed_application_list"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".UrlActivity"
+            android:name="com.example.mynfcapplication.UrlActivity"
+            android:exported="false"
             android:label="@string/title_activity_url"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
-
-
-
-
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -4,17 +4,25 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">@color/Shirley</item>
+        <item name="colorPrimaryDark">@color/Shirley</item>>
+        <item name="colorAccent">@color/Shirley</item>
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="AppTheme.ToolBar" parent="AppTheme">
+        <item name="titleTextColor">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.AppCompat.PopupMenu.Overflow</item>>
+        <!-- <item name="actionOverflowMenuStyle">-->
+    </style>
+
+    <style name="Widget.AppCompat.PopupMenu.Overflow" parem="Widget.AppCompat.PopupMenu.Overflow">
+
+        <item name="overlapAnchor">false</item>
+        <!-- 上面那一行代码的意思是指的是其位于toolbar下方-->
     </style>
 
 </resources>
+

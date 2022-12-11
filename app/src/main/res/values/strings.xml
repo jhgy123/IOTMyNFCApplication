@@ -3,8 +3,8 @@
 
     <string name="app_name">NFC应用</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    
+    <string name="action_settings">关于我们</string>
+
     <string name="title_activity_auto_run_application">NFC应用</string>
     <string name="title_activity_installed_application_list">已安装应用程序</string>
     <string name="title_activity_url">写入url链接</string>
